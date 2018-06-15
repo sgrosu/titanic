@@ -8,7 +8,7 @@ import logging
 
 def extract_data(url, file_path):
     with session() as c:
-        c.post('https://www.kaggle.com/account/login', data = payload)
+        c.post('https://www.kaggle.com/', data = payload)
         with open(file_path, 'wb') as handle:
             response = c.get(url, stream=True)
             for block in response.iter_content(1024):
@@ -25,8 +25,8 @@ def main(project_dir):
     
     #file_paths
     raw_data_path = os.path.join(project_dir,'data','raw')
-    train_data_path = os.path.join(raw_data_path, 'train.csv')
-    test_data_path = os.path.join(raw_data_path, 'test.csv')
+    train_data_path = os.path.join(raw_data_path, 'train1.csv')
+    test_data_path = os.path.join(raw_data_path, 'test1.csv')
     
     #extract data
     extract_data(train_url,train_data_path)
